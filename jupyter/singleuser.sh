@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# Copyright (c) Jupyter Development Team.
+# Distributed under the terms of the Modified BSD License.
 
 set -e
 
@@ -12,7 +13,7 @@ fi
 # so avoid specifying --arg=empty-string
 if [ -n "${NOTEBOOK_DIR}" ]; then
     # shellcheck disable=SC2089
-    NOTEBOOK_ARGS="--notebook-dir='${NOTEBOOK_DIR}' ${NOTEBOOK_ARGS}"
+    NOTEBOOK_ARGS="--root-dir='${NOTEBOOK_DIR}' ${NOTEBOOK_ARGS}"
 fi
 if [ -n "${JPY_PORT}" ]; then
     NOTEBOOK_ARGS="--port=${JPY_PORT} ${NOTEBOOK_ARGS}"
@@ -32,6 +33,8 @@ fi
 if [ -n "${JPY_HUB_API_URL}" ]; then
     NOTEBOOK_ARGS="--hub-api-url=${JPY_HUB_API_URL} ${NOTEBOOK_ARGS}"
 fi
+
+# Modern JupyterHub uses jupyter-labhub or jupyterhub-singleuser
 NOTEBOOK_BIN="jupyterhub-singleuser"
 
 # shellcheck disable=SC1091,SC2086,SC2090
