@@ -1,0 +1,7 @@
+#!/bin/bash
+# Replacement for run-one-constantly
+# Re-runs the command if it exits
+while true; do
+    "$@"
+    sleep 1
+done
